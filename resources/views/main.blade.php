@@ -9,7 +9,6 @@
 @include('partials._nav')
 
 <div class="container">
-    {{ Session::get('authenticated') == true ? "Logged in" : "Logged out" }}
 
     @include('partials._messages')
     @yield('content')
