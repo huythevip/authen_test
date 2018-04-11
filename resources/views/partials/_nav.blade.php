@@ -15,12 +15,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="#">About</a></li>
+                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="{{ route('about')  }}">About</a></li>
                 <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('logout') }}">Log out</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            @if( isset( $_SESSION['userSession'] ) )
+                                Hello, {{ $_SESSION['userSession']  }}
+                            @else
+                                You're not logged in
+                            @endif
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('logout')  }}">Log out</a></li>
+
+                        </ul>
+                    </li>
                 </ul>
             </ul>
         </div><!-- /.navbar-collapse -->
