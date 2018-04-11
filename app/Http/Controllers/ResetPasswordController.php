@@ -84,7 +84,7 @@ class ResetPasswordController extends Controller
            'password' => 'required|min:6|max:60|confirmed',
         ]);
         $user = User::where('email', '=', $request->userChangePassword)->first();
-        $user->password = md5($request->password);
+        $user->password = Hash::make($request->password);
         $user->save();
 
         //Clear Password reset table for security

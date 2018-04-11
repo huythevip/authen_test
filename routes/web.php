@@ -21,10 +21,10 @@ Route::get('/', function () {
 //Auth Controller
 Route::get('login', 'AuthController@getLoginForm')->name('login.get');
 Route::post('login', 'AuthController@login')->name('login.post');
-Route::get('register', 'AuthController@getRegistrationForm')->name('register.get');
-Route::post('register', 'AuthController@postRegister')->name('register.post');
+Route::get('register', 'UserController@getRegistrationForm')->name('register.get');
+Route::post('register', 'UserController@postRegister')->name('register.post');
 Route::get('logout', 'AuthController@logout')->name('logout');
-Route::get('activate/token={token}', 'AuthController@getActivate')->name('activate');
+Route::get('activate/token={token}', 'UserController@getActivate')->name('activate');
 
 //Reset Password Controller
 Route::post('resetpassword', 'ResetPasswordController@postResetPassword')->name('reset.password');
